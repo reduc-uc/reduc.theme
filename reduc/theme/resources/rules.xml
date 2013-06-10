@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rules
+  xmlns="http://namespaces.plone.org/diazo"
+  xmlns:css="http://namespaces.plone.org/diazo/css"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <rules css:if-content="#visual-portal-wrapper">
+    <!-- Default Rules -->
+    <theme href="index.html" />
+    <drop theme="/html/head/meta" />
+    <drop theme="/html/head/title" />
+    <drop theme="/html/head/base" />
+    <drop theme="/html/head/style" />
+    <drop theme="/html/head/script" />
+    <drop theme="/html/head/link" />
+    <drop theme="/html/head/comment()" />
+
+    <after content="/html/head/meta" theme-children="/html/head" />
+    <after content="/html/head/title" theme-children="/html/head" />
+
+    <after
+      content="/html/head/base | /html/head/style | /html/head/script | /html/head/link | /html/head/comment()"
+      theme-children="/html/head"
+      />
+
+    <copy attributes="class id dir" content="/html/body" theme="/html/body" />
+
+    <!-- My Rules -->
+    <!--before css:content=".portletLogin" css:theme="#livesearch0" /-->
+    <replace css:content=".portletLogin" css:theme="#anon-personaltoolbar" />
+    <drop css:theme="#portal-personaltools" css:if-content=".portletLogin" />
+    <replace css:content="#portal-personaltools-wrapper"
+             css:theme="#portal-personaltools-wrapper"
+             css:if-content="#user-name" />
+
+    <replace css:content="#portal-globalnav" css:theme="#portal-globalnav" />
+    <!--replace css:content="#portal-columns" css:theme="#portal-columns" /-->
+    <replace css:content="#viewlet-above-content" css:theme="#viewlet-above-content" />
+    <replace css:content="#edit-bar" css:theme="#edit-bar" />
+    <replace css:content="#kssPortalMessage" css:theme="#kssPortalMessage" />
+    <replace css:content="#content" css:theme="#content" />
+    <replace css:content="#viewlet-below-content" css:theme="#viewlet-below-content" />
+    <replace css:content="#portal-colophon" css:theme="#portal-colophon" />
+    <replace css:content="#portal-siteactions" css:theme="#portal-siteactions" />
+
+  </rules>
+</rules>
